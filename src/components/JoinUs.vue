@@ -3,12 +3,6 @@ const click = () => console.log('click')
 </script>
 
 <template>
-  <div style="padding-bottom: 250px; margin-top: 200px">
-    Already have an account?
-    <span class="text-weight-bold">
-      <a href="">Sign in</a>
-    </span>
-  </div>
   <div class="row">
     <div class="col-12">
       <q-card flat>
@@ -75,9 +69,6 @@ const click = () => console.log('click')
 </template>
 
 <style scoped>
-a {
-  text-decoration: none;
-}
 .my-card {
   width: 426px;
   height: 108px;
