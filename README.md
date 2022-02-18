@@ -1,7 +1,21 @@
-# Vue 3 + Vite
+# This repo is for PropTexx coding test
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This project is built using Vue 3 + Vite
 
-## Recommended IDE Setup
+### Clone this project
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+```
+git clone https://github.com/paingtk/registration-design.git
+```
+
+### Install packages
+
+```
+npm install
+```
+
+### Compile and run
+
+```
+npm run dev
+```
