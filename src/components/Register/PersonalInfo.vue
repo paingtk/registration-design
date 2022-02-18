@@ -1,9 +1,14 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import BaseInput from '../BaseInput.vue'
 import BasePassword from '../BasePassword.vue'
+const router = useRouter()
 const accept = ref(false)
 const model = ref('')
+const submit = () => {
+  router.push({ name: 'ResidencyInfo' })
+}
 </script>
 
 <template>
@@ -29,14 +34,17 @@ const model = ref('')
         label="Register Account"
         style="width: 100%"
         color="blue-14"
+        @click="submit"
       />
       <div class="q-my-lg">Or</div>
-      <q-btn
-        no-caps
-        size="xl"
-        label="Register with Google"
-        style="width: 100%"
-      />
+      <q-btn no-caps size="xl" label="Register with Google" style="width: 100%">
+        <q-icon>
+          <q-img
+            src="@/assets/images/google.png"
+            style="width: 24px; height: 30px"
+          />
+        </q-icon>
+      </q-btn>
     </div>
   </div>
 </template>

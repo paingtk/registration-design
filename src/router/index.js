@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import RegisterPage from '@/pages/RegisterPage.vue'
 import JoinUs from '@/components/Register/JoinUs.vue'
 import PersonalInfo from '@/components/Register/PersonalInfo.vue'
+import ResidencyInfo from '@/components/Register/ResidencyInfo.vue'
+import BankVerification from '@/components/Register/BankVerification.vue'
+
 const routes = [
   {
     path: '/',
@@ -16,6 +19,16 @@ const routes = [
         path: '/personal-info',
         name: 'PersonalInfo',
         component: PersonalInfo,
+      },
+      {
+        path: '/residency-info',
+        name: 'ResidencyInfo',
+        component: ResidencyInfo,
+      },
+      {
+        path: '/bank-verification',
+        name: 'BankVerification',
+        component: BankVerification,
       },
     ],
   },
