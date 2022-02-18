@@ -5,7 +5,7 @@ import RegisterPage from '@/pages/RegisterPage.vue'
 <template>
   <q-layout>
     <q-page-container>
-      <RegisterPage />
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>

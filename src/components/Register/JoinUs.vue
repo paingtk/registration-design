@@ -1,5 +1,7 @@
 <script setup>
-const click = () => console.log('click')
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const go = () => router.push({ name: 'PersonalInfo' })
 </script>
 
 <template>
@@ -15,7 +17,7 @@ const click = () => console.log('click')
       </q-card>
     </div>
     <div class="col-12">
-      <q-card class="my-card" @click="click">
+      <q-card class="my-card" @click="go">
         <q-card-section class="q-pt-md" horizontal>
           <q-list>
             <q-item>
@@ -42,7 +44,7 @@ const click = () => console.log('click')
       </q-card>
     </div>
     <div class="col-12">
-      <q-card class="my-card q-mt-xl" @click="click">
+      <q-card class="my-card q-mt-xl">
         <q-card-section class="q-pt-md" horizontal>
           <q-list>
             <q-item>
