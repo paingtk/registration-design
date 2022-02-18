@@ -1,7 +1,13 @@
-<script setup></script>
+<script setup>
+import RegisterPage from '@/pages/RegisterPage.vue'
+</script>
 
 <template>
-  <div>ProTexx</div>
+  <q-layout>
+    <q-page-container>
+      <RegisterPage />
+    </q-page-container>
+  </q-layout>
 </template>
 
 <style>
@@ -11,6 +17,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
