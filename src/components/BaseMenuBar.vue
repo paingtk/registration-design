@@ -54,7 +54,7 @@ const back = () => router.go(-1)
 
 <style scoped>
 .menu {
-  margin-top: 200px;
+  margin-top: 10vh;
 }
 a {
   text-decoration: none;

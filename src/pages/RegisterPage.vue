@@ -8,8 +8,8 @@ import BankVerification from '../components/Register/BankVerification.vue'
 </script>
 
 <template>
-  <div class="row justify-center items-center window-height">
-    <div class="col-lg-4 col-sm-12">
+  <div class="row window-height">
+    <div class="col-lg-6 col-sm-12">
       <BaseSideCover />
     </div>
     <div style="height: 100%" class="col-lg-4 col-sm-12 q-ml-xl">
