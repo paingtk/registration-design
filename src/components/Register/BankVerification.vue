@@ -2,7 +2,11 @@
 import { ref } from 'vue'
 const bankVeriNumber = ref()
 const submit = () => {
-  console.log('success')
+  if (!bankVeriNumber.value) {
+    alert('Please enter bank verification number!')
+  } else {
+    alert('Successfully registered!')
+  }
 }
 </script>
 
@@ -19,7 +23,16 @@ const submit = () => {
       </div>
       <div class="text-left q-mb-md">
         <label>Bank verification number (BVN)</label>
-        <q-input outlined v-model="bankVeriNumber" mask="############">
+        <q-input
+          outlined
+          v-model="bankVeriNumber"
+          mask="############"
+          :rules="[
+            (val) =>
+              (val && val.length == 12) ||
+              'Verification number is required and have to be 12 digit numbers.',
+          ]"
+        >
           <template
             v-if="bankVeriNumber && bankVeriNumber.length === 12"
             v-slot:append

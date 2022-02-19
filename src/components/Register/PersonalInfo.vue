@@ -5,9 +5,22 @@ import BaseInput from '../BaseInput.vue'
 import BasePassword from '../BasePassword.vue'
 const router = useRouter()
 const accept = ref(false)
-const model = ref('')
+const fullName = ref('')
+const email = ref('')
+const password = ref('')
 const submit = () => {
-  router.push({ name: 'ResidencyInfo' })
+  if (!fullName.value || !email.value || !password.value || !accept.value) {
+    alert('Please fill and accept the required fields!')
+  } else {
+    router.push({ name: 'ResidencyInfo' })
+  }
+}
+
+// Email Validation
+const isValidEmail = () => {
+  const regEmail =
+    /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/
+  return regEmail.test(email.value) || 'Please enter a valid email address!'
 }
 </script>
 
@@ -22,20 +35,33 @@ const submit = () => {
         <br />
         your details are required.
       </div>
-      <BaseInput title="Your Fullname *" type="text" v-model="model" />
-      <BaseInput title="Email Address *" type="email" />
-      <BasePassword title="Password *" />
-      <div class="text-left q-my-xl">
-        <q-checkbox v-model="accept" label="I accept the license and terms" />
-      </div>
-      <q-btn
-        no-caps
-        size="xl"
-        label="Register Account"
-        style="width: 100%"
-        color="blue-14"
-        @click="submit"
-      />
+      <q-form>
+        <BaseInput
+          title="Your Fullname *"
+          type="text"
+          v-model="fullName"
+          :rules="[(val) => !!val || 'Name is required!']"
+        />
+        <BaseInput
+          title="Email Address *"
+          type="email"
+          v-model="email"
+          :rules="[(val) => !!val || 'Email is required!', isValidEmail]"
+        />
+        <BasePassword title="Password *" v-model="password" />
+        <div class="text-left q-my-xl">
+          <q-checkbox v-model="accept" label="I accept the license and terms" />
+        </div>
+        <q-btn
+          no-caps
+          size="xl"
+          label="Register Account"
+          style="width: 100%"
+          color="blue-14"
+          @click="submit"
+        />
+      </q-form>
+
       <div class="q-my-lg">Or</div>
       <q-btn no-caps size="xl" label="Register with Google" style="width: 100%">
         <q-icon>

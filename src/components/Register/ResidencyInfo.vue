@@ -3,9 +3,15 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import BaseInput from '../BaseInput.vue'
 const router = useRouter()
-const model = ref('')
+const country = ref('')
+const address = ref('')
+const phone = ref('')
 const submit = () => {
-  router.push({ name: 'BankVerification' })
+  if (!phone.value || !address.value || !country.value) {
+    alert('Please fill all the required fields')
+  } else {
+    router.push({ name: 'BankVerification' })
+  }
 }
 const options = [
   'Australia',
@@ -30,16 +36,27 @@ const options = [
       </div>
       <div class="text-left q-mb-md">
         <label>Phone Number</label>
-        <q-input outlined v-model="phone" mask="(###) ### - ####" />
+        <q-input
+          outlined
+          v-model="phone"
+          mask="(###) ### - ####"
+          :rules="[(val) => !!val || 'Phone number is required!']"
+        />
       </div>
-      <BaseInput title="Your Address" type="text" />
+      <BaseInput
+        title="Your Address"
+        type="text"
+        v-model="address"
+        :rules="[(val) => !!val || 'Address is required!']"
+      />
       <div class="text-left q-mb-md">
         <label>Country of Residence</label>
         <q-select
           outlined
-          v-model="model"
+          v-model="country"
           :options="options"
           label="Please Select"
+          :rules="[(val) => !!val || 'Country of residence is required!']"
         />
       </div>
 

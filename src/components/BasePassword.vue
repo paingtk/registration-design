@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 const props = defineProps({
   modelValue: String,
   title: {
@@ -8,8 +8,10 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['update:modelValue'])
-const onChanged = () => emit('update:modelValue', password.value)
-const password = ref(props.modelValue)
+const password = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value),
+})
 const isPwd = ref(true)
 </script>
 
@@ -19,8 +21,10 @@ const isPwd = ref(true)
     <q-input
       outlined
       :type="isPwd ? 'password' : 'text'"
-      @input="onChanged"
       v-model="password"
+      :rules="[
+        (val) => val.length >= 7 || 'Password should be at least 7 characters!',
+      ]"
     >
       <template v-slot:append>
         <q-icon

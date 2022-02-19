@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 const props = defineProps({
   modelValue: String,
+  rules: String | Array,
   title: {
     type: String,
     default: '',
@@ -12,15 +13,16 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['update:modelValue'])
-const model = ref(props.modelValue)
-const onChanged = (e) => {
-  emit('update:modelValue', model.value)
-}
+
+const model = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value),
+})
 </script>
 
 <template>
   <div class="text-left q-mb-md">
     <label>{{ title }}</label>
-    <q-input :type="type" outlined v-model="model" @input="onChanged(e)" />
+    <q-input :type="type" outlined v-model="model" :rules="rules" />
   </div>
 </template>
